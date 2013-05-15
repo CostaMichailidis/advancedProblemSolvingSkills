@@ -4,13 +4,399 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=1024" initial-scale="1">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>Getting Started with CouchDB and Node.js</title>
-  <meta name="description" content="">
+  <title>Advanced Problem Solving Skills</title>
+  <meta name="description" content="Our creative capacity can be used to solve the most complex of challenges. In this course we'll break down the different problem types and learn strategies for tackling each of them.">
   <!-- Fonts  -->
-  <script src="http://use.edgefonts.net/asap.js"></script>
-  <script src="http://use.edgefonts.net/source-code-pro.js"></script>
-  <script src="http://use.edgefonts.net/marck-script.js"></script>
-  <link rel="stylesheet" href="stylesheets/style.css">
+  <script src="http://use.edgefonts.net/gentium-basic.js"></script>
+  <script src="http://use.edgefonts.net/merienda-one.js"></script>
+  <style type="text/css">
+    /* Reset */
+    html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      font-size: 100%;
+      font: inherit;
+      vertical-align: top;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+      display: block;
+    }
+
+    body {
+      line-height: 1.3;
+    }
+
+    ol, ul {
+      list-style: none;
+    }
+
+    blockquote, q {
+      quotes: none;
+    }
+
+    blockquote:before, blockquote:after, q:before, q:after {
+      content: '';
+      content: none;
+    }
+
+    :focus {
+      outline: none;
+    }
+
+    ins {
+      text-decoration: none;
+    }
+
+    del {
+      text-decoration: line-through;
+    }
+
+    table {
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    /* Typography */
+
+    html, body {
+      font-family: sans-serif;
+      font-size: 87%;
+      color: #293140;
+    }
+
+    body {
+      line-height: 1.3;
+    }
+
+    p {margin:1em 0;}
+
+    h1, h2, h3, h4, h5, h6 {line-height:1.1;}
+
+    h1 {font-size:305.15%;font-weight:bold;color:#000;margin:0;padding:.2em 0;}
+    h2 {font-size:244.15%;font-weight:bold;color:#000;margin:0;padding:.2em 0;}
+    h3 {font-size:195.3%;font-weight:bold;color:#000;margin:0;padding:.2em 0;}
+    h4 {font-size:156.25%;font-weight:bold;color:#000;margin:0;padding:.2em 0;}
+    h5 {font-size:125%;font-weight:bold;color:#000;margin:0;padding:.2em 0;}
+    h6 {font-size:100%;font-weight:bold;color:#000;margin:0;padding:.2em 0;}
+
+    ul {list-style-type:circle;margin:0;padding:0;line-height:1.1;}
+    ol {list-style-type:decimal;margin:0;padding:0;line-height:1.1;}
+    li {margin:0 0 0 2em;padding:0;}
+
+    .normal {font-weight:normal;}
+    .bold, strong {font-weight:bold;}
+    .italic, em {font-style:italic;}
+    .underline {text-decoration:underline;}
+    .black, strong {color:#000000;}
+    .grey {color:#293140;}
+    .white {color:#ffffff;}
+    .red {color:#D03333}
+    .green {color:#48D854}
+
+    .xxl {font-size:195.3%;}
+    .xl {font-size:156.25%;}
+    .big {font-size:125%;}
+    .med {font-size:100%;}
+    .small {font-size:80%;}
+    .xs {font-size:64%;}
+    .xxs {font-size:51.2%;}
+
+    .left {text-align:left;}
+    .right {text-align:right;}
+    .center {text-align:center;}
+
+    .hidden {display:none !important;}
+
+    a {
+      color: #062bff;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    a:hover {
+      opacity: 0.7;
+      /*text-decoration: underline;*/
+    }
+
+    /* for two levels of nested quotations */
+    blockquote, q {quotes: '“' '”' '‘' '’';}
+
+    /* extra content definitions for pre-2011 WebKit */
+    q:before {content: '“'; content: open-quote;}
+    q:after {content: '”'; content: close-quote;}
+    q q:before {content: '‘'; content: open-quote;}
+    q q:after {content: '’'; content: close-quote;}
+
+    /* q in blockquote */
+    blockquote q:before {content: '‘'; content: open-quote;}
+    blockquote q:after {content: '’'; content: close-quote;}
+    blockquote q q:before {content: '“'; content: open-quote;}
+    blockquote q q:after {content: '”'; content: close-quote;}
+
+    :focus {
+      outline: none;
+    }
+
+    ins {
+      text-decoration: none;
+    }
+
+    del {
+      text-decoration: line-through;
+    }
+
+    .clearfix:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: " ";
+      clear: both;
+      height: 0;
+    }
+
+    /* Presentation Styles */
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background:url('images/presentations/white-sand.png');
+      background-repeat:repeat;
+      padding:0;
+      margin:0;
+      font-family: gentium-basic, sans-serif;
+      font-size:100%;
+    }
+
+    #start, #quotes, #problems-challenges, #many-challenges, #comparison, #phrasing, #why-what, #problem-types, #imagine, #resources, #costa {
+      position: relative;
+      width: 960px;
+      margin: auto;
+    }
+
+    #start {
+      text-align:center;
+    }
+
+    #quotes q {
+      font-family:merienda-one;
+    }
+
+    #quotes p {
+      margin-bottom:0;
+      text-align:right;
+      font-size:120%;
+      color:#D1AD43;
+      font-weight:bold;
+    }
+
+    #quotes div.quote1, #quotes div.quote2, #quotes div.quote3 {
+      width: 550px;
+      padding: 1em;
+      background: #fff;
+      border-radius: 8px;
+      border-left: 8px solid #D1AD43;
+      box-shadow: 0 0 4px 0 #9FA3B3;
+      -webkit-transition: 0.5s;
+      -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+    }
+
+    #quotes.present div.quote1 {
+      -webkit-transform: translateX(-25px) translateY(-10px) rotate(-10deg);
+      -moz-transform: translateX(-25px) translateY(-10px) rotate(-10deg);
+      -ms-transform: translateX(-25px) translateY(-10px) rotate(-10deg);
+      -o-transform: translateX(-25px) translateY(-10px) rotate(-10deg);
+      transform: translateX(-25px) translateY(-10px) rotate(-10deg);
+    }
+
+    #quotes.present div.quote2 {
+      -webkit-transform: translateY(-50px) translateX(490px) rotate(-15deg);
+      -moz-transform: translateY(-50px) translateX(490px) rotate(-15deg);
+      -ms-transform: translateY(-50px) translateX(490px) rotate(-15deg);
+      -o-transform: translateY(-50px) translateX(490px) rotate(-15deg);
+      transform: translateY(-50px) translateX(490px) rotate(-15deg);
+    }
+
+    #quotes.present div.quote3 {
+      -webkit-transform: translateY(20px) translateX(150px) rotate(10deg);
+      -moz-transform: translateY(20px) translateX(150px) rotate(10deg);
+      -ms-transform: translateY(20px) translateX(150px) rotate(10deg);
+      -o-transform: translateY(20px) translateX(150px) rotate(10deg);
+      transform: translateY(20px) translateX(150px) rotate(10deg);
+    }
+
+    #problems-challenges div.left, #problems-challenges div.right {
+      float:left;
+      width:50%;
+      font-size: 26px;
+      text-align:center;
+    }
+
+    #problems-challenges div.left p, #problems-challenges div.right p {
+      display:inline-block;
+      max-width:380px;
+      padding:25px;
+      margin: 15px;
+      background:#ffffff;
+      box-shadow: 0 0 4px 0 #9FA3B3;
+      -webkit-transition: 0.5s;
+      -moz-transition: 0.5s;
+      -ms-transition: 0.5s;
+      -o-transition: 0.5s;
+      transition: 0.5s;
+    }
+
+    #problems-challenges h2 {
+      position:relative;
+      top:-320px;
+      text-shadow: 1px 1px 2px #707989;
+    }
+
+    #problems-challenges div.left h2 {
+      left:-170px;
+    }
+
+    #problems-challenges div.right h2 {
+      right:-120px;
+    }
+
+    #problems-challenges div.left p {
+      position:absolute;
+      left:-90px;
+      text-align:left;
+      border-radius: 5px;
+      border-left: 5px solid #D03333;
+    }
+
+    #problems-challenges div.right p {
+      position:absolute;
+      right:0px;
+      text-align:left;
+      border-radius: 5px;
+      border-left: 5px solid #48D854;
+    }
+
+    #problems-challenges p.fat {
+      z-index:2;
+    }
+
+    #problems-challenges.present p.problem1, #problems-challenges.present p.challenge1 {
+      -webkit-transform: translateX(-105px) translateY(-300px) rotate(-10deg);
+      -moz-transform: translateX(-105px) translateY(-300px) rotate(-10deg);
+      -ms-transform: translateX(-105px) translateY(-300px) rotate(-10deg);
+      -o-transform: translateX(-105px) translateY(-300px) rotate(-10deg);
+      transform: translateX(-105px) translateY(-300px) rotate(-10deg);
+    }
+
+    #problems-challenges.present p.problem2, #problems-challenges.present p.challenge2 {
+      -webkit-transform: translateY(-220px) translateX(220px) rotate(15deg);
+      -moz-transform: translateY(-220px) translateX(220px) rotate(15deg);
+      -ms-transform: translateY(-220px) translateX(220px) rotate(15deg);
+      -o-transform: translateY(-220px) translateX(220px) rotate(15deg);
+      transform: translateY(-220px) translateX(220px) rotate(15deg);
+    }
+
+    #problems-challenges.present p.problem3, #problems-challenges.present p.challenge3 {
+      -webkit-transform: translateY(-90px) translateX(10px);
+      -moz-transform: translateY(-90px) translateX(10px);
+      -ms-transform: translateY(-90px) translateX(10px);
+      -o-transform: translateY(-90px) translateX(10px);
+      transform: translateY(-90px) translateX(10px);
+    }
+
+    #problems-challenges.present p.problem4, #problems-challenges.present p.challenge4 {
+      -webkit-transform: translateX(-105px) translateY(50px) rotate(10deg);
+      -moz-transform: translateX(-105px) translateY(50px) rotate(10deg);
+      -ms-transform: translateX(-105px) translateY(50px) rotate(10deg);
+      -o-transform: translateX(-105px) translateY(50px) rotate(10deg);
+      transform: translateX(-105px) translateY(50px) rotate(10deg);
+    }
+
+    #problems-challenges.present p.problem5, #problems-challenges.present p.challenge5 {
+      -webkit-transform: translateY(120px) translateX(175px) rotate(-20deg);
+      -moz-transform: translateY(120px) translateX(175px) rotate(-20deg);
+      -ms-transform: translateY(120px) translateX(175px) rotate(-20deg);
+      -o-transform: translateY(120px) translateX(175px) rotate(-20deg);
+      transform: translateY(120px) translateX(175px) rotate(-20deg);
+    }
+
+    #many-challenges div {
+      display:inline-block;
+      padding:1em 2em;
+      background:#fff;
+      border-radius:21px;
+      box-shadow: 0 0 4px 0 #9FA3B3;
+      border-left:21px solid #46CF52;
+      font-size:140%;
+    }
+
+    #many-challenges, #phrasing, #why-what, #problem-types, #comparison, #resources {
+      opacity:0.9;
+      transition: 1.2s;
+    }
+
+    #many-challenges.future, #many-challenges.past, #phrasing.future, #phrasing.past, #why-what.future, #why-what.past, #problem-types.future, #problem-types.past, #comparison.past, #resources.past, #resources.future {
+      opacity:0;
+    }
+
+    #comparison {
+      text-align:center;
+    }
+
+    #comparison h1 {
+      margin: 2em 1em;
+    }
+
+    #phrasing {
+      font-size:140%;
+      padding-bottom:100px;
+    }
+
+    #why-what, #problem-types {
+      font-size:160%;
+      padding-bottom:100px;
+    }
+
+    #problem-types div.types {
+      position:relative;
+      left:600px;
+      top:-73px;
+      font-style: italic;
+    }
+
+    #imagine p.quote {
+      font-family:merienda-one;
+      font-size:255%;
+      color:#EABB48;
+    }
+
+    #imagine p {
+      text-align:center;
+    }
+
+    #resources {
+      font-size:250%;
+    }
+
+    #costa h1 {
+      font-size:700%;
+    }
+
+    #costa div.row img, #costa div.row p {
+      display: inline-block;
+      vertical-align:middle;
+      font-size:244.15%;
+      margin:5px;
+    }
+  </style>
   <!-- <script src="javascripts/jquery.js"></script> -->
   <!-- <link rel="shortcut icon" href="favicon.png"> -->
   <!-- <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
@@ -19,128 +405,145 @@
 
   <div id="impress">
 
-    <div id="couch" class="step" data-x="0" data-y="0" data-scale="100">
-      <img src="images/couchdb-logo.svg" alt="">
+    <div id="start" class="step" data-x="0" data-y="0" data-scale="100">
+      <h1>Advanced Problem Solving Skills</h1>
+      <img src="images/presentations/problem-solving.svg" alt="Problem Solving Diagram">
     </div>
 
-    <div id="quote" class="step" data-x="-28600" data-y="16800" data-rotate="350" data-scale="1">
-      <p class="quote">Django may be built for the Web, but CouchDB is built of the Web.</p>
-      <p class="source">&mdash; Jacob Kaplan-Moss, Django developer</p>
-    </div>
-
-    <div id="noSql" class="step" data-x="-20000" data-y="13800" data-rotate="-20" data-scale="1">
-      <a href="http://couchdb.apache.org/">
-        <img src="images/couchsite.jpg" alt="">
-      </a>
-    </div>
-
-    <div id="json" class="step" data-x="-19000" data-y="16800" data-rotate="-20" data-scale="1">
-      <div class="item1">
-        <p>A Business Card</p>
-<pre>{
-  "first name": "Homer",
-  "middle initial": "J.",
-  "last name": "Simpson",
-  "contact": {
-    "cell": "347-765-xxxx",
-    "email": "homer@fox.com",
-    "address": "742 Evergreen Terrace"
-  }
-}</pre>
+    <div id="quotes" class="step xl" data-x="-9400" data-y="6700" data-scale="1">
+      <div class="quote1">
+        <q>No problem can be solved from the same level of consciousness that created it.</q>
+        <p>Albert Einstein</p>
       </div>
-      <div class="item2">
-        <p>A Tweet</p>
-<pre>{
-  "handle": "IdeasAndAction",
-  "timestamp": "8:19 AM - 18 Dec 12",
-  "tweet": "Can computers be creative? ...",
-  "retweets": [
-    "InnovationBound",
-    "TEDxGramercy",
-    "Rockstarchi"
-  ]
-}</pre>
+      <div class="quote2">
+        <q>If you only have a hammer, you tend to see every problem as a nail.</q>
+        <p>Abraham Maslow</p>
       </div>
-      <div class="item3">
-        <p>A Product Review</p>
-<pre>{
-  "product headline": "This will cure your baldness",
-  "price": "$10.00",
-  "product description": "a hat",
-  "review": {
-    "reviewer": "bald guy",
-    "rating": "0/10",
-    "remarks": "Are you kidding me?"
-  }
-}</pre>
+      <div class="quote3">
+        <q>For every complex problem there is an answer that is clear, simple, and wrong.</q>
+        <p>H. L. Mencken</p>
       </div>
     </div>
 
-    <div id="appserve" class="step" data-x="-10100" data-y="13800" data-rotate="30" data-scale="1">
-      <p>CouchDB is a <strong>Database</strong>, but it's also a <strong>Web Server</strong> and an <strong>Application Server</strong>.</p>
+    <div id="problems-challenges" class="step" data-x="-8600" data-y="8000" data-rotate="155" data-scale="1">
+      <div class="left">
+        <h2 class="red">Problems</h2>
+        <p class="problem1">Solar power is not efficient enough yet.</p>
+        <p class="problem2">Gas is expensive.</p>
+        <p class="problem3 fat">I'm Fat!</p>
+        <p class="problem4">I'm always so Angry.</p>
+        <p class="problem5">The girl I like doesn't like me.</p>
+      </div>
+      <div class="right">
+        <h2 class="green">Challenges</h2>
+        <p class="challenge1"><strong><em>How to </strong></em>accelerate the improvement of solar power technologies?</p>
+        <p class="challenge2"><strong><em>In what ways might</strong></em> I rely less on gasoline?</p>
+        <p class="challenge3"><strong><em>How to</strong></em> get fit?</p>
+        <p class="challenge4"><strong><em>How might</strong></em> I use my anger to do good?</p>
+        <p class="challenge5"><strong><em>What might be all the ways</strong></em> to win her over?</p>
+      </div>
     </div>
 
-    <div id="arch1" class="step" data-x="-8100" data-y="13800" data-rotate="60" data-scale="1">
-      <img src="images/arch1.png" alt="">
+    <div id="many-challenges" class="step" data-x="-8215.4" data-y="7687" data-rotate="155" data-scale=".07">
+      <div>
+        <p>How to get fit?</p>
+        <p>In what ways might I make getting into shape enjoyable?</p>
+        <p>What might be all the ways to enjoy being fat?</p>
+        <p>In what wasy might I make getting into shape probable?</p>
+        <p>How might I make money getting back into shape?</p>
+        <p>What might be all the ways to keep my motivation high?</p>
+        <p>How to inspire myself to work out more?</p>
+        <p>What might be all the habits keeping me fat?</p>
+        <p>How to make everyone else fat, so that I can feel normal?</p>
+      </div>
     </div>
 
-    <div id="arch2" class="step" data-x="-5000" data-y="18800" data-rotate="120" data-scale="1">
-      <img src="images/arch2.png" alt="">
+    <div id="comparison" class="step" data-x="-7450" data-y="7300" data-rotate="90" data-scale="1">
+      <h1><em class="red">Problems</em> Suck, but <em class="green">Challenges</em> are Interesting.</h1>
+      <h1>From one <em class="red">problem</em>, we can identify many potential <em class="green">challenges</em>.</h1>
+      <h1>Did you notice the difference in <em class="underline">phrasing</em>?</h1>
     </div>
 
-    <div id="arch3" class="step" data-x="-1000" data-y="19000" data-rotate="-120" data-scale="1">
-      <img src="images/arch3.png" alt="">
-    </div>
-
-    <div id="pouch" class="step" data-x="1000" data-y="15000" data-rotate="-120" data-scale="1">
-      <p><strong>PouchDB</strong><br>What's <strong>PouchDB?</strong></p>
-      <img src="images/pouchfox.png" alt="">
-    </div>
-
-    <div id="arch4" class="step" data-x="2700" data-y="14500" data-rotate="-60" data-scale="1">
-      <img src="images/arch4.png" alt="">
-    </div>
-
-    <div id="arch5" class="step" data-x="6100" data-y="12500" data-rotate="-30" data-scale="1">
-      <img src="images/arch5.png" alt="">
-    </div>
-
-    <div id="arch6" class="step" data-x="12400" data-y="10600" data-rotate="0" data-scale="1">
-      <img src="images/arch6.png" alt="">
-    </div>
-
-    <div id="resources" class="step" data-x="12000" data-y="-7800" data-rotate="20" data-scale="1">
-      <h2>Resources</h2>
+    <div id="phrasing" class="step" data-x="-7746" data-y="7300" data-rotate="90" data-scale=".05">
+      <h3><span class="red">Problems</span> such as these...</h3>
       <ul>
-        <li><a href="http://www.iriscouch.com/">iriscouch.com</a></li>
-        <li><a href="http://couchdb.apache.org/">couchdb.apache.org</a></li>
-        <li><a href="http://wiki.apache.org/couchdb/">wiki.apache.org/couchdb</a></li>
-        <li><a href="https://github.com/dscape/nano">github.com/dscape/nano</a></li>
-        <li><a href="http://guide.couchdb.org/">guide.couchdb.org</a></li>
-        <li><a href="http://kan.so/">kan.so</a></li>
+        <li>Solar power is not efficient enough yet.</li>
+        <li>Gas is expensive.</li>
+        <li>I'm Fat!</li>
+        <li>I'm always so Angry.</li>
+        <li>The girl I like doesn't like me.</li>
+      </ul>
+      <h3>...and in general, are phrased in a <em>matter-of-fact</em> manner.</h3>
+      <h3><span class="green">Challenges</span> such as these...</h3>
+      <ul>
+        <li><strong><em>How to </strong></em>accelerate the improvement of solar power technologies?</li>
+        <li><strong><em>In what ways might</strong></em> I rely less on gasoline?</li>
+        <li><strong><em>How to</strong></em> get fit?</li>
+        <li><strong><em>How might</strong></em> I use my anger to do good?</li>
+        <li><strong><em>What might be all the ways</strong></em> to win her over?</li>
+      </ul>
+      <h3>...and in general, are phrased in such a way that they <em>invite solutions</em>.</h3>
+    </div>
+
+    <div id="why-what" class="step" data-x="-7746" data-y="7300" data-rotate="90" data-scale=".05">
+      <h3>Breaking a <span class="red">problem</span> down into <span class="green">challenges</span>.</h3>
+      <p>Listen to the <strong><em>owner</em></strong> of a <span class="red bold">problem</span> talk about it, and extract potential <span class="green bold">challenges</span>. Ask <strong><em>who, what, where, and when</strong></em> questions to help them provide detail.</p>
+      <p>Ask <strong><em>Why is this a problem?</strong></em> and <strong><em>What's stopping you from solving it?</strong></em> in order to create a <strong><em>Web of Abstraction</em></strong> that maps the breakdown of the problem.</p>
+      <p>Take any of the <span class="green bold">challenges</span> and <strong><em>reframe</em></strong> them in order to pursue an innovative understanding of the problem.</p>
+      <h4>Each <span class="green">challenge</span> can inspire a completely unique problem solving adventure.</h4>
+    </div>
+
+    <div id="problem-types" class="step" data-x="-7746" data-y="7300" data-rotate="90" data-scale=".05">
+      <h3>Three Types of <span class="green">Challenges</span>:</h3>
+      <div class="types">
+        <h3>Action</h3>
+        <span>Some challenges simply need action to solve.</span>
+        <h3>Planning</h3>
+        <span>Other challenges require some planning to solve.</span>
+        <h3>Imagination</h3>
+        <span>The most complex challenges require imagination.</span>
+      </div>
+    </div>
+
+    <div id="imagine" class="step" data-x="8000" data-y="4500" data-rotate="20" data-scale=".5">
+      <p class="quote"><q>Logic will get you from A to B. Imagination will take you everywhere.</q></p>
+      <p class="xxl bold black">Albert Einstein</p>
+    </div>
+
+    <div id="resources" class="step" data-x="12000" data-y="-7800" data-rotate="20" data-scale="4">
+      <h4>Resources and Citations</h4>
+      <ul>
+        <li><a href="http://blog.innovationbound.com">The Innovation Bound Blog</a></li>
+        <li><a href="http://meetup.com/InnovationBound">Our Meetup Page</a></li>
+        <li><a href="http://commons.wikimedia.org/wiki/File%3AProblem-Solving.svg">A Problem Solving Diagram</a></li>
       </ul>
     </div>
 
     <div id="costa" class="step slide" data-x="10000" data-y="-10000" data-rotate="35" data-scale="1">
-      <h2>Costa Michailidis</h2>
+      <h1>Costa Michailidis</h1>
       <div class="row">
-        <a href="http://twitter.com/IdeasAndAction">
-          <img src="images/twitter.svg" alt="" width="100px" height="100px">
-          <p>@IdeasAndAction</p>
+        <a href="http://linkedin.com/in/CostaMichailidis">
+          <img src="images/presentations/linkedin.svg" alt="" width="100px" height="100px">
+          <p>LinkedIn.com/in/CostaMichailidis</p>
         </a>
       </div>
       <div class="row">
-        <a href="http://linkedin.com/in/CostaMichailidis">
-          <img src="images/linkedin.svg" alt="" width="100px" height="100px">
-          <p>LinkedIn.com/in/CostaMichailidis</p>
+        <a href="http://innovationbound.com/Costa">
+          <img src="images/presentations/ib.png" alt="" width="100px" height="100px">
+          <p>InnovationBound.com/Costa</p>
+        </a>
+      </div>
+      <div class="row">
+        <a href="http://twitter.com/IdeasAndAction">
+          <img src="images/presentations/twitter.svg" alt="" width="100px" height="100px">
+          <p>@IdeasAndAction</p>
         </a>
       </div>
     </div>
 
     <div id="qr" class="step" data-x="11000" data-y="-11000" data-rotate="60" data-scale="1">
-      <img src="images/qr.png" alt="">
+      <img src="images/presentations/qr.png" alt="">
     </div>
-
 
   </div>
 
