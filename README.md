@@ -1,4 +1,4 @@
 advancedProblemSolvingSkills
 ============================
 
-An impress.js presentation on Advanced Problem Solving Concepts
+An impress.js presentation on __Advanced Problem Solving Concepts__
